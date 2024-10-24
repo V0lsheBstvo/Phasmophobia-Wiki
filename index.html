@@ -6,40 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Призраки - Phasmophobia Wiki</title>
     <style>
+        :root {
+            --primary-color: #ffca00;
+            --second-color: #ffca00;
+        }
+
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1c1c1c;
-            color: #f0f0f0;
+            background-color: #121212;
+            color: #fff;
+            transition: background-color 0.3s ease;
         }
 
         header {
-            background: #333;
-            color: #fff;
+            background: #1f1f1f;
+            color: var(--primary-color);
             padding: 20px;
             text-align: center;
-            border-bottom: 2px solid #444;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #ffcc00;
+            border-bottom: 2px solid var(--primary-color);
         }
 
         main {
@@ -49,47 +35,27 @@
         }
 
         h2 {
-            color: #ffcc00;
+            color: var(--primary-color);
+            text-shadow: 1px 1px 2px #000;
         }
-
 
         .ghost {
             background-color: #222;
             border: 1px solid #444;
-            border-radius: 5px;
+            border-radius: 8px;
             padding: 15px;
             margin: 15px 0;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .ghost:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px #a9cfe0;
         }
 
         h3 {
-            color: #ffcc00;
+            color: var(--second-color);
             margin-top: 0;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1c1c1c;
-            color: #f0f0f0;
-        }
-
-        header {
-            background: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-bottom: 2px solid #444;
-        }
-
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        h2 {
-            color: #ffcc00;
         }
 
         .search-filter {
@@ -98,21 +64,33 @@
             margin-bottom: 20px;
         }
 
-        .search-filter input {
-            width: 70%;
+        .search-filter input,
+        .search-filter select {
+            width: 46%;
             padding: 10px;
             border: 1px solid #444;
             border-radius: 5px;
             background-color: #222;
             color: #fff;
+            transition: border-color 0.3s ease;
         }
 
-        .search-filter select {
-            padding: 10px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            background-color: #222;
-            color: #fff;
+        .search-filter input:focus,
+        .search-filter select:focus {
+            border-color: #a9cfe0;
+            outline: none;
+        }
+
+        @media (max-width: 600px) {
+            .search-filter {
+                flex-direction: column;
+            }
+
+            .search-filter input,
+            .search-filter select {
+                width: 90%;
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
@@ -135,15 +113,15 @@
         </div>
 
         <div id="ghostList">
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Дух (обычная скорость)</h3>
                 <p><strong>Улики:</strong> ЭМП | Радиоприемник | Записи в блокноте</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
                 <p>Редко покидает свою комнату. Использование благовония в комнате призрака задерживает охоту на 3
-                    минуты.</p>
+                    минуты. Часто гуляет по комнатам.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Мираж (обычная скорость)</h3>
                 <p><strong>Улики:</strong> ЭМП | Радиоприемник | Лазерный проектор</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
@@ -151,23 +129,23 @@
                     гостивенты в других комнатах.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Фантом (обычная скорость)</h3>
                 <p><strong>Улики:</strong> Радиоприемник | Отпечатки рук | Лазерный проектор</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
                 <p>Умеет телепортироваться. Во время охоты практически не виден, редко мерцает. Если сфотографировать во
-                    время гостивента, моделька пропадет.</p>
+                    время гостивента, моделька пропадет. Тепается рандомно в разные комнаты.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Полтергейст (обычная скорость)</h3>
                 <p><strong>Улики:</strong> Радиоприемник | Отпечатки рук | Записи в блокноте</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
                 <p>Швыряется предметами, особенно во время охоты. Можно сделать кучку из предметов, и они разлетятся в
-                    разные стороны.</p>
+                    разные стороны. Может раскидать огромную кучку и сильно швырять предметы.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Банши (обычная скорость)</h3>
                 <p><strong>Улики:</strong> Призрачный огонек | Отпечатки рук | Лазерный проектор</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
@@ -175,160 +153,167 @@
                     издать уникальный крик через направленный микрофон.</p>
             </div>
 
-            <div class="ghost" data-type="ускоряется">
+            <div class="ghost" data-type="ускоряется" data-sanity="50">
                 <h3>Джинн (ускоряется)</h3>
                 <p><strong>Улики:</strong> ЭМП | Отпечатки рук | Минусовая температура</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
-                <p>Ускоряется при виде жертвы, когда включен электро щиток.</p>
+                <p>Ускоряется при виде жертвы, когда включен электро щиток. Резко ускоряется при виде жертвы и может
+                    сильно съесть 25% рассудка.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="60">
                 <h3>Мара (обычная скорость)</h3>
                 <p><strong>Улики:</strong> Радиоприемник | Призрачный огонек | Записи в блокноте</p>
                 <p><strong>Начинает охоту:</strong> с 60% (в темноте) и с 40% (свет включен)</p>
-                <p>Часто разбивает лампочки во время гостивентов. Более активна в темноте.</p>
+                <p>Часто разбивает лампочки во время гостивентов. Более активна в темноте. Не любит свет и убегает в
+                    тёмную комнату от света.</p>
             </div>
 
-            <div class="ghost" data-type="ускоряется">
+            <div class="ghost" data-type="ускоряется" data-sanity="50">
                 <h3>Ревенант (ускоряется)</h3>
                 <p><strong>Улики:</strong> Призрачный огонек | Записи в блокноте | Минусовая температура</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
                 <p>Медленно передвигается, но резко ускоряется при обнаружении жертвы.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="35">
                 <h3>Тень (обычная скорость)</h3>
                 <p><strong>Улики:</strong> ЭМП | Записи в блокноте | Минусовая температура</p>
                 <p><strong>Начинает охоту:</strong> с 35% рассудка</p>
-                <p>Не начинает охоту при наличии 3 и более человек в комнате.</p>
+                <p>Не начинает охоту при наличии 3 и более человек в комнате. Не любит людей и малоактивна.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="70">
                 <h3>Демон (обычная скорость)</h3>
                 <p><strong>Улики:</strong> Отпечатки рук | Записи в блокноте | Минусовая температура</p>
                 <p><strong>Начинает охоту:</strong> с 70% рассудка</p>
-                <p>Может начать охоту раньше, чем другие призраки.</p>
+                <p>Начинает охоту раньше, чем другие призраки. Может и при 100%.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Юрэй (обычная скорость)</h3>
                 <p><strong>Улики:</strong> Призрачный огонёк | Минусовая температура | Лазерный проектор</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
-                <p>Может полностью закрыть дверь.</p>
+                <p>Захлопывает дверь и делает с дверью чик-чик. Может полностью закрыть дверь.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Они (обычная скорость)</h3>
                 <p><strong>Улики:</strong> ЭМП | Минусовая температура | Лазерный проектор</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
-                <p>Во время охоты меньше всех мерцает.</p>
+                <p>Во время охоты меньше всех мерцает. Очень любит людей и активен рядом с игроком.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Ёкай (обычная скорость)</h3>
                 <p><strong>Улики:</strong> Радиоприёмник | Призрачный огонёк | Лазерный проектор</p>
                 <p><strong>Начинает охоту:</strong> с 50% (разговаривая рядом - с 80%)</p>
-                <p>Не замечает фонарик и почти не слышит.</p>
+                <p>Не замечает фонарик и почти не слышит. Легко проверяется на радиошипении.</p>
             </div>
 
-            <div class="ghost" data-type="ускоряется">
+            <div class="ghost" data-type="ускоряется" data-sanity="50">
                 <h3>Ханту (ускоряется)</h3>
                 <p><strong>Улики:</strong> Отпечатки рук | Призрачный огонёк | Минусовая температура</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
-                <p>Быстрее при минусовой температуре, медленнее при включенном свете.</p>
+                <p>Быстрее при минусовой температуре, медленнее при включенном свете. Любит холод и выключает щиток.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Горё (обычная скорость)</h3>
                 <p><strong>Улики:</strong> ЭМП | Отпечаток рук | Лазерный проектор</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
-                <p>Не меняет любимую комнату.</p>
+                <p>Не меняет любимую комнату и в охоте далеко от неё не ходит.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Мюлинг (обычная скорость)</h3>
                 <p><strong>Улики:</strong> ЭМП | Отпечаток рук | Записи в блокноте</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
-                <p>Разговорчивый призрак, можно проверить через направленный микрофон.</p>
+                <p>Разговорчивый призрак, можно проверить через направленный микрофон. Очень тихий в атаке.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="60">
                 <h3>Онрё (обычная скорость)</h3>
                 <p><strong>Улики:</strong> Радиоприёмник | Призрачный огонёк | Минусовая температура</p>
                 <p><strong>Начинает охоту:</strong> с 60% (если рядом потухла свеча - с 100%)</p>
-                <p>Не любит огонь.</p>
+                <p>Не любит огонь и тушит свечу, после чего может начать охоту.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Близнецы (один близнец быстрый, другой обычный)</h3>
                 <p><strong>Улики:</strong> ЭМП | Радиоприёмник | Минусовая температура</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
-                <p>Один близнец быстрый, другой медленный.</p>
+                <p>Один близнец быстрый, другой медленный. Могут действовать одновременно в двух смежных комнатах.</p>
             </div>
 
-            <div class="ghost" data-type="ускоряется">
+            <div class="ghost" data-type="ускоряется" data-sanity="50">
                 <h3>Райдзю (ускоряется)</h3>
                 <p><strong>Улики:</strong> ЭМП | Призрачный огонёк | Лазерный проектор</p>
                 <p><strong>Начинает охоту:</strong> с 50% (если рядом работает электроника - с 65%)</p>
-                <p>Быстрее рядом с электроприборами.</p>
+                <p>Быстрее рядом с электроприборами. Любит электроприборы охотников.</p>
             </div>
 
-            <div class="ghost" data-type="замедляется">
+            <div class="ghost" data-type="замедляется" data-sanity="50">
                 <h3>Обакэ (замедляется)</h3>
                 <p><strong>Улики:</strong> Отпечатки рук | ЭМП | Призрачный огонёк</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
-                <p>Может убрать свои отпечатки после повторного взаимодействия с дверью.</p>
+                <p>Может убрать свои отпечатки после повторного взаимодействия с дверью. Имеет уникальный 6-палый
+                    отпечаток.</p>
             </div>
 
-            <div class="ghost" data-type="обычная скорость">
+            <div class="ghost" data-type="обычная скорость" data-sanity="50">
                 <h3>Мимик (берёт скорость у призрака, которого копирует)</h3>
                 <p><strong>Улики:</strong> Радиоприёмник | Отпечаток рук | Минусовая температура</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
-                <p>Может копировать поведение любого призрака.</p>
+                <p>Может копировать поведение любого призрака. Если скопирует сам себя будет инактив 2 минуты.</p>
             </div>
 
-            <div class="ghost" data-type="ускоряется">
+            <div class="ghost" data-type="ускоряется" data-sanity="50">
                 <h3>Морой (ускоряется)</h3>
                 <p><strong>Улики:</strong> Минусовая температура | Записи в блокноте | Радиоприёмник</p>
                 <p><strong>Начинает охоту:</strong> с 50% рассудка</p>
-                <p>Проклинает игрока, рассудок снижается в 2 раза быстрее.</p>
+                <p>Проклинает игрока после ответа по радио, рассудок снижается в 2 раза быстрее.</p>
             </div>
 
-            <div class="ghost" data-type="замедляется">
+            <div class="ghost" data-type="замедляется" data-sanity="40">
                 <h3>Деоген (замедляется)</h3>
                 <p><strong>Улики:</strong> Радиоприёмник | Записи в блокноте | Лазерный проектор</p>
                 <p><strong>Начинает охоту:</strong> с 40% рассудка</p>
-                <p>Всегда знает, где вы находитесь.</p>
+                <p>Всегда знает, где вы находитесь. В охоте от него нельзя спрятаться.</p>
             </div>
 
-            <div class="ghost" data-type="ускоряется">
+            <div class="ghost" data-type="ускоряется" data-sanity="75">
                 <h3>Тайэ (ускоренный)</h3>
                 <p><strong>Улики:</strong> Призрачный огонёк | Лазерный проектор | Записи в блокноте</p>
                 <p><strong>Начинает охоту:</strong> с 75% (молодой) и с 15% (старый)</p>
-                <p>С возрастом становится медленнее.</p>
+                <p>С возрастом становится медленнее. Стареет от нахождения игрока в его комнате.</p>
             </div>
+        </div>
 
-            <script>
-                function filterGhosts() {
-                    const searchInput = document.getElementById('search').value.toLowerCase();
-                    const ghostType = document.getElementById('ghostType').value;
-                    const ghosts = document.querySelectorAll('.ghost');
 
-                    ghosts.forEach(ghost => {
-                        const name = ghost.querySelector('h3').innerText.toLowerCase();
-                        const type = ghost.getAttribute('data-type');
+        <script>
+            function filterGhosts() {
+                const searchInput = document.getElementById('search').value.toLowerCase();
+                const ghostType = document.getElementById('ghostType').value;
+                const ghosts = document.querySelectorAll('.ghost');
+                ghosts.forEach(ghost => {
+                    const name = ghost.querySelector('h3').innerText.toLowerCase();
+                    const type = ghost.getAttribute('data-type');
+                    const matchesSearch = name.includes(searchInput);
+                    const matchesType = ghostType === '' || type === ghostType;
+                    if (matchesSearch && matchesType) {
+                        ghost.style.display = '';
+                    } else {
+                        ghost.style.display = 'none';
+                    }
+                });
+            }
 
-                        const matchesSearch = name.includes(searchInput);
-                        const matchesType = ghostType === '' || type === ghostType;
+        </script>
 
-                        if (matchesSearch && matchesType) {
-                            ghost.style.display = '';
-                        } else {
-                            ghost.style.display = 'none';
-                        }
-                    });
-                }
-            </script>
+
+
+    </main>
 </body>
 
 </html>
